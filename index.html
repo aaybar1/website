@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Andrés A. Aybar — Social Statistics & Research</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#F2F4EF;
+    --paper-raised:#FBFCFA;
+    --ink:#1E2B26;
+    --ink-soft:#4A544D;
+    --ink-faint:#899088;
+    --line:#D8DBD2;
+    --line-strong:#B9BFB2;
+    --accent:#3F6E64;
+    --accent-deep:#264A42;
+    --gold:#A8792F;
+    --card-bg:#FFFFFF;
+  }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', sans-serif;
+    font-size:16px;
+    line-height:1.65;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--accent-deep); text-decoration:none; border-bottom:1px solid var(--line-strong); transition:border-color .15s ease, color .15s ease;}
+  a:hover{color:var(--gold); border-bottom-color:var(--gold);}
+
+  .wrap{max-width:920px; margin:0 auto; padding:0 28px;}
+
+  /* ---------- Header / Hero ---------- */
+  header.hero{
+    background:linear-gradient(180deg, var(--accent-deep) 0%, #1B3A34 100%);
+    color:#EFF3EF;
+    padding:72px 0 56px;
+  }
+  header.hero .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:#9FC2B7;
+    margin:0 0 18px;
+  }
+  header.hero h1{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    font-size:clamp(38px, 6vw, 58px);
+    line-height:1.05;
+    margin:0 0 10px;
+    color:#FBFCFA;
+  }
+  header.hero .role{
+    font-family:'Newsreader', serif;
+    font-style:italic;
+    font-weight:400;
+    font-size:20px;
+    color:#CBE0D8;
+    margin:0 0 28px;
+  }
+  header.hero .bio{
+    max-width:640px;
+    font-size:16px;
+    color:#DCE7E2;
+    margin:0 0 14px;
+  }
+  header.hero .bio + .bio{margin-top:14px;}
+  header.hero .bio a{color:#EAF4EF; border-bottom-color:rgba(234,244,239,.45);}
+  header.hero .bio a:hover{color:#F4D8A8; border-bottom-color:#F4D8A8;}
+
+  .social-row{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:32px;
+  }
+  .social-row a{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    letter-spacing:.03em;
+    color:#EFF3EF;
+    background:rgba(255,255,255,.08);
+    border:1px solid rgba(255,255,255,.22);
+    border-radius:3px;
+    padding:7px 13px;
+  }
+  .social-row a:hover{
+    background:rgba(255,255,255,.16);
+    border-color:rgba(255,255,255,.4);
+    color:#F4D8A8;
+  }
+
+  /* ---------- Sections ---------- */
+  section{padding:52px 0;}
+  section + section{border-top:1px solid var(--line);}
+
+  .section-head{
+    display:flex;
+    align-items:baseline;
+    justify-content:space-between;
+    gap:16px;
+    margin-bottom:28px;
+  }
+  .section-head .eyebrow{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12px;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+    color:var(--ink-faint);
+  }
+  h2.section-title{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    font-size:28px;
+    margin:2px 0 0;
+    color:var(--ink);
+  }
+  .section-note{
+    font-size:13.5px;
+    color:var(--ink-faint);
+    font-family:'IBM Plex Mono', monospace;
+    text-align:right;
+  }
+
+  ul.plain-list{list-style:none; margin:0; padding:0;}
+  ul.plain-list li{
+    padding:16px 0;
+    border-bottom:1px solid var(--line);
+    display:flex;
+    gap:14px;
+    align-items:baseline;
+  }
+  ul.plain-list li:last-child{border-bottom:none;}
+  ul.plain-list li::before{
+    content:"—";
+    color:var(--line-strong);
+    flex:none;
+  }
+  ul.plain-list a{font-size:15.5px; color:var(--ink);}
+  ul.plain-list a:hover{color:var(--gold);}
+
+  /* ---------- Portfolio cards ---------- */
+  .portfolio-grid{
+    display:grid;
+    grid-template-columns:repeat(2, 1fr);
+    gap:18px;
+  }
+  .portfolio-card{
+    background:var(--card-bg);
+    border:1px solid var(--line);
+    border-radius:6px;
+    padding:22px 22px 20px;
+    display:flex;
+    flex-direction:column;
+    gap:12px;
+    transition:border-color .15s ease, transform .15s ease;
+  }
+  .portfolio-card:hover{
+    border-color:var(--accent);
+    transform:translateY(-2px);
+  }
+  .portfolio-card .tag{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:11px;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--accent-deep);
+    background:#E7EFEA;
+    display:inline-block;
+    padding:4px 9px;
+    border-radius:3px;
+    width:fit-content;
+  }
+  .portfolio-card h3{
+    font-family:'Newsreader', serif;
+    font-weight:500;
+    font-size:19px;
+    line-height:1.3;
+    margin:0;
+    color:var(--ink);
+  }
+  .portfolio-card p{
+    font-size:14.5px;
+    color:var(--ink-soft);
+    margin:0;
+    flex-grow:1;
+  }
+  .portfolio-card .view-link{
+    font-family:'IBM Plex Mono', monospace;
+    font-size:13px;
+    color:var(--accent-deep);
+    border-bottom:1px solid var(--line-strong);
+    width:fit-content;
+  }
+  .portfolio-card .view-link:hover{color:var(--gold); border-bottom-color:var(--gold);}
+
+  .portfolio-foot{
+    margin-top:22px;
+    font-size:13.5px;
+    color:var(--ink-faint);
+  }
+
+  footer{
+    padding:36px 0 48px;
+    text-align:center;
+    font-family:'IBM Plex Mono', monospace;
+    font-size:12.5px;
+    color:var(--ink-faint);
+  }
+
+  @media (max-width:680px){
+    header.hero{padding:52px 0 40px;}
+    .portfolio-grid{grid-template-columns:1fr;}
+    .section-head{flex-direction:column; align-items:flex-start; gap:6px;}
+    .section-note{text-align:left;}
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Santo Domingo, Dominican Republic</p>
+    <h1>Andrés A. Aybar</h1>
+    <p class="role">Social Statistics &amp; Research</p>
+    <p class="bio">Clinical psychologist and scientific researcher from Santo Domingo, Dominican Republic, with over 15 years of experience in the field of drug addiction treatment and assessment. Additionally, I have 5+ years of expertise as a data scientist, focusing on social sciences and statistical analysis.</p>
+    <p class="bio">I currently work as a quantitative researcher at the <a href="https://inm.gob.do/" target="_blank" rel="noopener">Dominican Republic National Institute of Migration (INMRD)</a>, where I conduct and review migration studies. I also work as a psychotherapist alongside the team at <a href="https://www.terapiastobe.com/" target="_blank" rel="noopener">Centro de Salud y Desarrollo Troncoso Bello</a>, where I conduct clinical research.</p>
+
+    <div class="social-row">
+      <a href="https://orcid.org/0009-0007-3374-1146" target="_blank" rel="noopener">ORCID</a>
+      <a href="https://www.linkedin.com/in/aaybara/" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://rpubs.com/AA24" target="_blank" rel="noopener">RPubs</a>
+      <a href="https://github.com/aaybar1" target="_blank" rel="noopener">GitHub</a>
+      <a href="https://www.terapiastobe.com/sobre-andres-aybar" target="_blank" rel="noopener">Private practice</a>
+    </div>
+  </div>
+</header>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">01</p>
+        <h2 class="section-title">Research</h2>
+      </div>
+    </div>
+    <ul class="plain-list">
+      <li><a href="https://catalogo.uasd.edu.do/cgi-bin/koha/opac-detail.pl?biblionumber=245419&query_desc=au%2Cwrdl%3A%20Andres%20Aybar" target="_blank" rel="noopener">Distribución de frecuencias en pacientes ingresados por problemas relacionados con sustancias en la Clínica Conductual Volver, 2019–2022 — Universidad Autónoma de Santo Domingo, 2023</a></li>
+      <li><a href="https://inm.gob.do/encuesta-sectorial-construccion-ensecon/" target="_blank" rel="noopener">Encuesta Sectorial Construcción (ENSECON-2025)</a></li>
+      <li><a href="https://inm.gob.do/encuesta-sectorial-turismo-ensetur/" target="_blank" rel="noopener">Encuesta Sectorial Turismo (ENSETUR-2025)</a></li>
+    </ul>
+  </div>
+</section>
+
+<section id="portfolio">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">02</p>
+        <h2 class="section-title">Reproducible research</h2>
+      </div>
+      <p class="section-note">R Markdown · RPubs portfolio</p>
+    </div>
+
+    <div class="portfolio-grid">
+
+      <div class="portfolio-card">
+        <span class="tag">Public health</span>
+        <h3>Frequency distribution of patients admitted for substance-related disorders</h3>
+        <p>Santo Domingo, 2019–2022 — descriptive analysis of admissions to a behavioral clinic, built on the same dataset behind the UASD research thesis above.</p>
+        <a class="view-link" href="https://rpubs.com/AA24/frequency_substance" target="_blank" rel="noopener">View report ↗</a>
+      </div>
+
+      <div class="portfolio-card">
+        <span class="tag">Data analysis</span>
+        <h3>Most harmful and destructive storms and weather-related events in the U.S.</h3>
+        <p>1950–2011 — exploration of NOAA storm data to rank events by population health impact and economic damage.</p>
+        <a class="view-link" href="https://rpubs.com/AA24/Stormdata" target="_blank" rel="noopener">View report ↗</a>
+      </div>
+
+      <div class="portfolio-card">
+        <span class="tag">Behavioral research</span>
+        <h3>Impulsividad y agresividad al conducir</h3>
+        <p>Análisis estadístico sobre la relación entre impulsividad y comportamiento agresivo en la conducción vial.</p>
+        <a class="view-link" href="https://rpubs.com/AA24/Road_Rage" target="_blank" rel="noopener">View report ↗</a>
+      </div>
+
+      <div class="portfolio-card">
+        <span class="tag">EDA</span>
+        <h3>Exploratory data analysis</h3>
+        <p>Walkthrough of an exploratory data analysis workflow in R — cleaning, summarizing, and visualizing a raw dataset.</p>
+        <a class="view-link" href="https://rpubs.com/AA24/activity_monitoring" target="_blank" rel="noopener">View report ↗</a>
+      </div>
+
+      <div class="portfolio-card" style="grid-column: span 2;">
+        <span class="tag">Data wrangling</span>
+        <h3>Getting and cleaning data: tidy data</h3>
+        <p>Applying tidy-data principles to reshape and merge raw survey data into an analysis-ready format in R.</p>
+        <a class="view-link" href="https://rpubs.com/AA24/tidydata" target="_blank" rel="noopener">View report ↗</a>
+      </div>
+
+    </div>
+
+    <p class="portfolio-foot">More reports on <a href="https://rpubs.com/AA24" target="_blank" rel="noopener">rpubs.com/AA24</a>.</p>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">03</p>
+        <h2 class="section-title">Articles</h2>
+      </div>
+    </div>
+    <ul class="plain-list">
+      <li><a href="https://acento.com.do/amp/opinion/seguridad-ciudadana-brecha-entre-la-percepcion-y-la-experiencia-en-los-grupos-socioeconomicos-9391081.html" target="_blank" rel="noopener">Seguridad ciudadana: Brecha entre la percepción y la experiencia en los grupos socioeconómicos</a></li>
+      <li><a href="https://acento.com.do/opinion/hombres-jovenes-encabezan-las-estadisticas-de-muertes-accidentales-y-violentas-9391070.html" target="_blank" rel="noopener">Hombres jóvenes encabezan las estadísticas de muertes accidentales y violentas</a></li>
+      <li><a href="https://inm.gob.do/noticias/migracion-y-economia-la-relevancia-de-las-remesas-dominicanas/" target="_blank" rel="noopener">Migración y economía: la relevancia de las remesas dominicanas</a></li>
+      <li><a href="https://inm.gob.do/noticias/remesas-dominicanas-en-un-contexto-economico-cambiante/" target="_blank" rel="noopener">Remesas dominicanas en un contexto económico cambiante</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">04</p>
+        <h2 class="section-title">ONE — Oficina Nacional de Estadística</h2>
+      </div>
+    </div>
+    <ul class="plain-list">
+      <li><a href="https://one.gob.do/publicaciones/2025/compendio-de-estadisticas-de-muertes-accidentales-y-violentas-2020-2024/?altTemplate=publicacionOnline" target="_blank" rel="noopener">Compendio de Estadísticas de Muertes Accidentales y Violentas</a></li>
+      <li><a href="https://one.gob.do/publicaciones/2025/anuario-de-estadisticas-de-muertes-accidentales-y-violentas-2024/?altTemplate=publicacionOnline" target="_blank" rel="noopener">Anuario de Estadísticas de Muertes Accidentales y Violentas</a></li>
+      <li><a href="https://one.gob.do/publicaciones/2025/anuario-de-estadisticas-sociodemograficas-2024/?altTemplate=publicacionOnline" target="_blank" rel="noopener">Anuario de Estadísticas Sociodemográficas</a></li>
+      <li><a href="https://one.gob.do/publicaciones/2024/infografia-seguridad-vial/" target="_blank" rel="noopener">Infografía Seguridad Vial</a></li>
+      <li><a href="https://one.gob.do/publicaciones/2025/infografia-seguridad-ciudadana-republica-dominicana/?altTemplate=publicacionOnline" target="_blank" rel="noopener">Infografía Seguridad Ciudadana</a></li>
+      <li><a href="https://one.gob.do/publicaciones/2025/infografia-de-estadisticas-de-gobierno/?altTemplate=publicacionOnline" target="_blank" rel="noopener">Infografía de Estadísticas de Gobierno</a></li>
+      <li><a href="https://www.one.gob.do/publicaciones/2025/manual-de-estadisticas-de-gobernanza/?altTemplate=publicacionOnline" target="_blank" rel="noopener">Manual de Estadísticas de Gobernanza</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">05</p>
+        <h2 class="section-title">Collaborations</h2>
+      </div>
+    </div>
+    <ul class="plain-list">
+      <li><a href="https://idl.iscram.org/files/encarnacion/2023/2530_Encarnacion+Wilks2023.pdf" target="_blank" rel="noopener">Encarnación, T. &amp; Wilks, C. R. (2023) Role of expressed emotions on the retransmission of help-seeking messages during disasters. Proceedings of the 20th ISCRAM Conference.</a></li>
+    </ul>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="eyebrow">06</p>
+        <h2 class="section-title">Academic background</h2>
+      </div>
+    </div>
+    <ul class="plain-list">
+      <li><a href="https://www.unibe.edu.do/" target="_blank" rel="noopener">Bachelor's degree in Clinical Psychology — Universidad Iberoamericana</a></li>
+      <li><a href="https://uasd.edu.do/" target="_blank" rel="noopener">Master's degree in Scientific Research Methodology — Universidad Autónoma de Santo Domingo</a></li>
+      <li><a href="https://www.maximaformacion.es/programas/master-de-estadistica-aplicada-con-r-software" target="_blank" rel="noopener">Master's degree in Applied Statistics for Data Science with R</a></li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  Andrés A. Aybar — Santo Domingo, República Dominicana
+</footer>
+
+</body>
+</html>
