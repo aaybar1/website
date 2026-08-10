@@ -45,13 +45,13 @@
   }
   header.hero .hero-grid{
     display:grid;
-    grid-template-columns:1fr 260px;
+    grid-template-columns:1fr 340px;
     gap:44px;
-    align-items:start;
+    align-items:stretch;
   }
   header.hero .hero-photo{
     width:100%;
-    aspect-ratio:4/5;
+    height:100%;
     object-fit:cover;
     object-position:50% 20%;
     border-radius:6px;
@@ -87,6 +87,7 @@
     font-size:16px;
     color:#DCE7E2;
     margin:0 0 14px;
+    text-align:justify;
   }
   header.hero .bio + .bio{margin-top:14px;}
   header.hero .bio a{color:#EAF4EF; border-bottom-color:rgba(234,244,239,.45);}
@@ -245,6 +246,7 @@
     }
     header.hero .hero-photo{
       max-width:200px;
+      height:auto;
       aspect-ratio:4/5;
       order:-1;
     }
